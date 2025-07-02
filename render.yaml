@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: tracker-service
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python tracker.py"
