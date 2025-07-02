@@ -27,9 +27,12 @@ options = uc.ChromeOptions()
 driver = uc.Chrome(options=options)
 driver.get("https://web.whatsapp.com")
 
-# Load cookies
-with open("cookies.pkl", "rb") as f:
-    cookies = pickle.load(f)
+import base64
+
+# Load cookies from base64 file
+with open("cookies.b64", "rb") as f:
+    b64data = f.read()
+cookies = pickle.loads(base64.b64decode(b64data))
 for cookie in cookies:
     driver.add_cookie(cookie)
 driver.refresh()
